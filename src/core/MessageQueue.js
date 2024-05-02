@@ -37,7 +37,7 @@ class MessageQueue {
             return;
         }
 
-        if (chatType !== 'clan') {
+        if (chatType !== 'clan' && username === process.env.NICK_OWNER) {
             await this.delay(4000);
         }
 

@@ -40,7 +40,7 @@ async function processChatMessage(bot, jsonMsg, commandsRegistry) {
             await bot.sendMessage(type, response, nick);
         } else if (message.toLowerCase().includes('join')) {
             bot.sendMessage('local', `/c invite ${nick}`)
-        } else if (message.toLowerCase().includes('sendinvite') && nick === 'Remoris') {
+        } else if (message.toLowerCase().includes('sendinvite') && nick === process.env.NICK_OWNER) {
             bot.sendInvite = !!bot.sendInvite;
             bot.sendMessage(type, `${bot.sendInvite}`)
         }
