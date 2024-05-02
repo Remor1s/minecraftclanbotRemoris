@@ -6,6 +6,7 @@ require('dotenv').config({ path: process.env.DOTENV_CONFIG_PATH || './.env' });
 const { handlePlayerJoinedClan, handlePlayerLeftClan } = require('./events/clanEvents'); // Функции обработки
 const { initializeMessageQueue, getQueueInstance} = require('./messageQueueSingleton');
 const {scheduleMessage} = require("./cron/auto");
+const isSendInvite = require("./utils/sendInvite");
 
 // да простят меня боги за это
 const responsePatternsInvite = [
@@ -44,6 +45,8 @@ async function processChatMessage(bot, jsonMsg, commandsRegistry) {
             bot.sendMessage(type, `${bot.sendInvite}`)
         }
 
+        await isSendInvite(bot, type, nick, message);
+
 
     } catch (error) {
         console.error("Error processing message:", error);
@@ -69,6 +72,7 @@ async function startBot() {
         bot.sendMessage = function(chatType, message, username = '', delay = 8000) {
             getQueueInstance().enqueueMessage(chatType, message, username, delay);
         };
+
         bot.sendInvite = false;
 
         bot.on('death', () => {
