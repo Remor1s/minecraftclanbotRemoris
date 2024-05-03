@@ -7,6 +7,7 @@ const { handlePlayerJoinedClan, handlePlayerLeftClan } = require('./events/clanE
 const { initializeMessageQueue, getQueueInstance} = require('./messageQueueSingleton');
 const {scheduleMessage} = require("./cron/auto");
 const isSendInvite = require("./utils/sendInvite");
+const {handleTeleportRequest} = require("./utils/AutoTpaccept");
 
 // да простят меня боги за это
 const responsePatternsInvite = [
@@ -26,6 +27,8 @@ let spawnCount = 0;
 
 async function processChatMessage(bot, jsonMsg, commandsRegistry) {
     const messageText = jsonMsg.toString();
+    await handleTeleportRequest(bot, messageText);
+    
     try {
         const parsedMessage = await parseMessage(bot, messageText, jsonMsg);
         if (!parsedMessage) return;
