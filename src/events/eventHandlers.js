@@ -2,14 +2,11 @@
 const { handlePlayerJoinedClan, handlePlayerLeftClan } = require('./clanEvents');
 const {autoMessage} = require("../cron/automessage");
 const {processChatMessage} = require("../Handlers/MessageHandler");
-
+const {handleJoinMessage, handleLeaveMessage, handleExclusionMessage} = require("../Handlers/clanMembershipUpdates");
 
 let spawnCount = 0;
 
 function registerEventHandlers(bot) {
-    // main.js
-    const { handleJoinMessage, handleLeaveMessage, handleExclusionMessage } = require('./messageHandlers');
-
     bot.on('message', async (jsonMsg) => {
         const message = jsonMsg.toString();
         console.log(message);
