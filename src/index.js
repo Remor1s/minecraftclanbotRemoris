@@ -151,9 +151,9 @@ async function startBot() {
 
 
 async function activateFunctions(bot) {
-    await scheduleMessage(bot, 'clan', 'уведомление о дсе', 1)
-    await scheduleMessage(bot, 'global', 'набор в клан', 15)
-    await scheduleMessage(bot, 'local', 'реморис лох', 11)
+    await scheduleMessage(bot, 'clan', 'реморис лох', 1)
+    //await scheduleMessage(bot, 'global', 'набор в клан', 15)
+    //await scheduleMessage(bot, 'local', 'реморис лох', 11)
 }
 
 startBot();
