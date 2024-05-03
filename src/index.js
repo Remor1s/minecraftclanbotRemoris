@@ -24,7 +24,7 @@ async function startBot() {
             console.log('Logged in!');
             setTimeout(() => bot.chat(`/login ${process.env.BOT_PASSWORD}`), 1000)
             setTimeout(() => bot.chat("/surv1"), 3000);
-            bot.sendMessage('local', `/cc v0.1`)
+            bot.sendMessage('local', `/cc v0.2`)
         });
 
         bot.on('error', (err) => console.log('Error occurred:', err.message));
