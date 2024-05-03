@@ -19,22 +19,8 @@ async function startBot() {
             getQueueInstance().enqueueMessage(chatType, message, username, delay);
         };
         registerEventHandlers(bot);
-
-        bot.on('login', async () => {
-            console.log('Logged in!');
-            setTimeout(() => bot.chat(`/login ${process.env.BOT_PASSWORD}`), 1000)
-            setTimeout(() => bot.chat("/surv1"), 3000);
-            bot.sendMessage('local', `/cc v0.2`)
-        });
-
-        bot.on('error', (err) => console.log('Error occurred:', err.message));
-        bot.on('end', async () => {
-            console.log('Connection closed. Attempting to reconnect...');
-            setTimeout(startBot, 5000); // Wait 5 seconds before restarting
-        });
     } catch (error) {
         console.error('Error starting bot:', error);
     }
 }
-
 startBot();

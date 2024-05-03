@@ -1,7 +1,7 @@
 // eventHandlers.js
 const { handlePlayerJoinedClan, handlePlayerLeftClan } = require('./clanEvents');
 const {autoMessage} = require("../cron/automessage");
-const {processChatMessage} = require("../Handlers/HandlerMessage");
+const {processChatMessage} = require("../Handlers/MessageHandler");
 
 
 let spawnCount = 0;
@@ -42,6 +42,19 @@ function registerEventHandlers(bot) {
         if (entity.type === 'player' && bot.sendInvite) {
             bot.sendMessage('local', `/c invite ${entity.username}`)
         }
+    });
+
+    bot.on('login', async () => {
+        console.log('Logged in!');
+        setTimeout(() => bot.chat(`/login ${process.env.BOT_PASSWORD}`), 1000)
+        setTimeout(() => bot.chat("/surv1"), 3000);
+        bot.sendMessage('local', `/cc v0.2`)
+    });
+
+    bot.on('error', (err) => console.log('Error occurred:', err.message));
+    bot.on('end', async () => {
+        console.log('Connection closed. Attempting to reconnect...');
+        setTimeout(startBot, 5000); // Wait 5 seconds before restarting
     });
 
 
