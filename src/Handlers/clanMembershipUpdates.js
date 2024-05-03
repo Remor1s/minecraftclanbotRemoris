@@ -1,4 +1,6 @@
 // messageHandlers.js
+const {handlePlayerJoinedClan, handlePlayerLeftClan} = require("../events/clanEvents");
+
 async function handleJoinMessage(bot, message) {
     const joinMatch = message.match(/\[\*\]\s+(\S+)\s+присоеденился к клану\./i);
     if (joinMatch) {

@@ -1,5 +1,4 @@
 // eventHandlers.js
-const { handlePlayerJoinedClan, handlePlayerLeftClan } = require('./clanEvents');
 const {autoMessage} = require("../cron/automessage");
 const {processChatMessage} = require("../Handlers/MessageHandler");
 const {handleJoinMessage, handleLeaveMessage, handleExclusionMessage} = require("../Handlers/clanMembershipUpdates");
