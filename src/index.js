@@ -8,6 +8,7 @@ const { initializeMessageQueue, getQueueInstance} = require('./messageQueueSingl
 const {scheduleMessage} = require("./cron/auto");
 const isSendInvite = require("./utils/sendInvite");
 const {handleTeleportRequest} = require("./utils/AutoTpaccept");
+const {handleMathChallenge} = require("./utils/MathChalleng");
 
 // да простят меня боги за это
 const responsePatternsInvite = [
@@ -28,7 +29,8 @@ let spawnCount = 0;
 async function processChatMessage(bot, jsonMsg, commandsRegistry) {
     const messageText = jsonMsg.toString();
     await handleTeleportRequest(bot, messageText);
-    
+    handleMathChallenge(bot, messageText);
+
     try {
         const parsedMessage = await parseMessage(bot, messageText, jsonMsg);
         if (!parsedMessage) return;
@@ -48,7 +50,7 @@ async function processChatMessage(bot, jsonMsg, commandsRegistry) {
             bot.sendMessage(type, `${bot.sendInvite}`)
         }
 
-        await isSendInvite(bot, type, nick, message);
+        //await isSendInvite(bot, type, nick, message);
 
 
     } catch (error) {
