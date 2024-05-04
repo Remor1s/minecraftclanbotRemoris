@@ -17,10 +17,11 @@ function registerEventHandlers(bot) {
     });
 
 
-    bot.on('spawn', () => {
+    bot.on('spawn', async () => {
         console.log('Bot spawned.');
+        spawnCount++;
         if (spawnCount === 2) {
-            autoMessage(bot);
+            await autoMessage(bot);
         }
     });
 
