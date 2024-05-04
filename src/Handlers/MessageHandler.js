@@ -37,7 +37,7 @@ async function processChatMessage(bot, jsonMsg) {
             bot.sendMessage(type, `${bot.sendInvite}`)
         }
 
-        //await isSendInvite(bot, type, nick, message);
+        await isSendInvite(bot, type, nick, message);
 
 
     } catch (error) {
