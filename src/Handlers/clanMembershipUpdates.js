@@ -6,7 +6,7 @@ async function handleJoinMessage(bot, message) {
     if (joinMatch) {
         const username = joinMatch[1];
         console.log(joinMatch);
-        await handlePlayerJoinedClan(username);
+        await handlePlayerJoinedClan(bot, username);
     }
 }
 
@@ -15,7 +15,7 @@ async function handleLeaveMessage(bot, message) {
     if (leaveMatch) {
         const username = leaveMatch[1];
         console.log(leaveMatch);
-        await handlePlayerLeftClan(username);
+        await handlePlayerLeftClan(bot, username);
     }
 }
 
@@ -24,7 +24,7 @@ async function handleExclusionMessage(bot, message) {
     if (exclusionMatch) {
         const username = exclusionMatch[1];
         console.log(exclusionMatch);
-        await handlePlayerLeftClan(username);
+        await handlePlayerLeftClan(bot, username);
     }
 }
 
