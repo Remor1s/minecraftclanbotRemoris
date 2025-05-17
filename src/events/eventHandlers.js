@@ -22,7 +22,7 @@ function registerEventHandlers(bot) {
         spawnCount++;
         if (spawnCount === 2) {
             await autoMessage(bot);
-            bot.sendMessage('global', '&f&lВсем привет! Вступй в наш клан. У нас каждую неделю проводятся розыгрыши на кейсы, где поучаствовать может каждый! Вступить в клан можно по команде /m ferndalebot join ')
+            bot.sendMessage('global', '&f&lВсем привет! Вступй в наш клан. У нас каждую неделю проводятся розыгрыши на кейс, где поучаствовать может каждый! Вступить в клан можно по команде /m ferndalebot join ')
         }
     });
 
